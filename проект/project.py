@@ -72,7 +72,6 @@ def get_header(pageUrl):
     html = download_html(pageUrl)
     if html != 0:
         header = re.search(regTitle, html).group(1)
-        header = re.sub(r'\\|/|\||\*|\?|:|"|<|>', '', header)
         return(header)
 
 def download_html(pageUrl):
@@ -142,9 +141,7 @@ def smth():
                             os.mkdir('newspaper/mystem-xml/' + yeardir + '/' + monthdir)
                     filename = 'article' + str(i)
                     with open ('newspaper/plain/' + yeardir + '/' + monthdir + '/' + filename + '.txt', 'w', encoding = 'utf-8') as t:
-                        t.write('@ ' + author + '\n@ ' + header + '\n@ ' + date + '\n@ ' + topic + '\n@ ' + pageUrl + '\n')
-                    with open ('newspaper/plain/' + yeardir + '/' + monthdir + '/' + filename + '.txt', 'a', encoding = 'utf-8') as t:
-                        t.write(text)
+                        t.write('@ ' + author + '\n@ ' + header + '\n@ ' + date + '\n@ ' + topic + '\n@ ' + pageUrl + '\n' + text)
                     mystemer(yeardir, monthdir, filename)
 
 smth()
