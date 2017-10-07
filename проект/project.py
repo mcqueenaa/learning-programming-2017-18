@@ -14,7 +14,7 @@ regTitle = re.compile('<meta property="og:title" content="(.*?)\| ЗОРИ ПЛ�
 regDate = re.compile('<time data-time="(.*?) .*?">', re.DOTALL)
 regTopic = re.compile('<!-- Item category name -->.*?news.*?>(.*?)</a>', re.DOTALL)
 numbers = []
-for i in range(6319, 9042):
+for i in range(6319, 6836):
     numbers.append(i)
 commonUrl = 'http://dobryanka.net/news/'
 
