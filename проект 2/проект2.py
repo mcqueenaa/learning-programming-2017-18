@@ -2,10 +2,13 @@ from flask import Flask
 from flask import url_for, render_template, request, redirect
 import json
 import re
+import sqlite3
+
 lang = {}
 towns = {}
 gender = {}
-##не все страницы на сайте открываются сразу (статистика, json) - сначала нужно хотя бы раз заполнить анкету
+
+##!!!не все страницы на сайте открываются сразу!!! для статистики, json сначала нужно хотя бы раз заполнить анкету
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,8 +16,17 @@ def index_main():
     return render_template('q.html')
 
 @app.route('/thanks')
-def thanks():
-    data = dict(request.args) 
+def database():
+    #заполнение таблицы
+    data = dict(request.args)
+    conn = sqlite3.connect('data.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE if not exists Questionnaire(Age integer, Town text, Sex text, Language text, Apostrof text, Dogovor text, Torty text, Shchavel text, Kvartal text)''')
+    c.execute("INSERT INTO Questionnaire (Age, Town, Sex, Language, Apostrof, Dogovor, Torty, Shchavel, Kvartal) VALUES(?,?,?,?,?,?,?,?,?)",
+    [data['возраст'][0], data['город'][0], data['пол'][0], data['язык'][0], data['апостроф'][0],data['договор'][0], data['торты'][0], data['щавель'][0], data['квартал'][0]])
+    conn.commit()
+    
+    #сохранение данных для статистики и вывод страницы
     with open('results_data.json', "a", newline="") as file: 
         file.write(json.dumps(data, ensure_ascii = False))
     language = request.args['язык']

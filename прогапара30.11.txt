@@ -1,0 +1,41 @@
+DDL:
+LIST
+CREATE
+ALTER
+DROP
+
+DML:
+SELECT
+INSERT
+UPDATE
+DELETE
+
+Пример1:
+SELECT id, name FROM stones WHERE density >= 2  если инсерт или делит нужно сохранить изменения
+
+Создать таблицу:
+CREATE TABLE(???) ДАЛЬШЕ ИДЕТ ПЕРЕЧИСЛЕНИЕ ПОЛЕЙ ТАБЛИЦЫ
+
+В питоне:
+
+import sqlite3
+conn = sqlite3.connect('baza.db') #или sqlite
+cur = conn.cursor()
+cur.execute('запрос') #см. пример1
+res = cur.fetchall()
+print(res)
+сохранить изменения:
+conn.commit()
+
+ПримеРЫ:
+"INSERT INTO stones (color, density, name) VALUES(?,?,?)", ['белый',6,'мрамор'] ###если не в питоне то эти штуки вместо вопросов
+
+UPDATE stones SET density=4 WHERE id=4
+DELETE FROM stones WHERE id=3 ##в питоне id =? ['3']
+
+CREATE TABLE stones(id INTEGER PRIMARY KEY AUTO INCREMENT, density INTEGER, name VARCHAR) или VAR CHAR(?)
+
+
+
+SELECT  * FROM movies WHERE 2000<=Year and Year<=2010;
+UPDATE movies SET Director='Lee Unkrich', Title = 'Toy Story 3' WHERE id=11
