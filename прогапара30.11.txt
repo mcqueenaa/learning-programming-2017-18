@@ -10,30 +10,30 @@ INSERT
 UPDATE
 DELETE
 
-Пример1:
-SELECT id, name FROM stones WHERE density >= 2  если инсерт или делит нужно сохранить изменения
+С•СЂРёРјРµСЂ1:
+SELECT id, name FROM stones WHERE density >= 2  РµСЃР»Рё РёРЅСЃРµСЂС‚ РёР»Рё РґРµР»РёС‚ РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёВ¤
 
-Создать таблицу:
-CREATE TABLE(???) ДАЛЬШЕ ИДЕТ ПЕРЕЧИСЛЕНИЕ ПОЛЕЙ ТАБЛИЦЫ
+вЂ”РѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ:
+CREATE TABLE(???) Ж’СР‹в„–РЋв‰€ В»Ж’в‰€вЂњ С•в‰€вЂ“в‰€вЂћВ»вЂ”Р‹в‰€РЊВ»в‰€ С•СњР‹в‰€вЂ¦ вЂњСР…Р‹В»Г·Сџ
 
-В питоне:
+В¬ РїРёС‚РѕРЅРµ:
 
 import sqlite3
-conn = sqlite3.connect('baza.db') #или sqlite
+conn = sqlite3.connect('baza.db') #РёР»Рё sqlite
 cur = conn.cursor()
-cur.execute('запрос') #см. пример1
+cur.execute('Р·Р°РїСЂРѕСЃ') #СЃРј. РїСЂРёРјРµСЂ1
 res = cur.fetchall()
 print(res)
-сохранить изменения:
+СЃРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёВ¤:
 conn.commit()
 
-ПримеРЫ:
-"INSERT INTO stones (color, density, name) VALUES(?,?,?)", ['белый',6,'мрамор'] ###если не в питоне то эти штуки вместо вопросов
+С•СЂРёРјРµвЂ“Сџ:
+"INSERT INTO stones (color, density, name) VALUES(?,?,?)", ['Р±РµР»С‹Р№',6,'РјСЂР°РјРѕСЂ'] ###РµСЃР»Рё РЅРµ РІ РїРёС‚РѕРЅРµ С‚Рѕ СЌС‚Рё С€С‚СѓРєРё РІРјРµСЃС‚Рѕ РІРѕРїСЂРѕСЃРѕРІ
 
 UPDATE stones SET density=4 WHERE id=4
-DELETE FROM stones WHERE id=3 ##в питоне id =? ['3']
+DELETE FROM stones WHERE id=3 ##РІ РїРёС‚РѕРЅРµ id =? ['3']
 
-CREATE TABLE stones(id INTEGER PRIMARY KEY AUTO INCREMENT, density INTEGER, name VARCHAR) или VAR CHAR(?)
+CREATE TABLE stones(id INTEGER PRIMARY KEY AUTO INCREMENT, density INTEGER, name VARCHAR) РёР»Рё VAR CHAR(?)
 
 
 
