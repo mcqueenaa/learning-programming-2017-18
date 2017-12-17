@@ -75,9 +75,11 @@ def word():
     word = html.unescape(word)
     return render_template('main2.html', weather = weatheris, oldword = word) 
 
-##@app.route('/2')
-##def page2():
-##    return render_template('news.html')
+@app.route('/2')
+def page2():
+    with open('mystemwords.txt', "r", encoding = 'utf-8') as file: 
+        words = file.read()
+    return render_template('news.html', words = words)
 
 @app.route('/3')
 def page3():
