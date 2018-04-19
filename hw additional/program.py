@@ -104,6 +104,5 @@ def check():
     return render_template('check.html', result = result)
 
 if __name__ == '__main__':
-    getdict()
     downloadpage()
     app.run(debug=True)
