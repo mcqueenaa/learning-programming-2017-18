@@ -77,6 +77,9 @@ def graphs():
     Yl = lnumber
     Yp = pnumber
 
+    print(letters)
+    print(Yl)
+
     ###графики показываются не вместе, а друг за другом. Если закрыть первый - откроется второй.
     plt.xticks(Xl, letters)
     plt.bar(Xl, Yl, color='plum')
