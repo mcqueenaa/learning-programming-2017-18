@@ -1,1 +1,4 @@
 https://twitter.com/warnpeacebot
+Хероку запускает бота, он работает, постит несколько твитов, но по истечении 60 секунд работы в хероку происходит ошибка R10, которая запрещает программе работать дольше минуты. "Heroku will report an application crashing and yield an R10 Boot Timeout error when a web process took longer than 60 seconds to bind to its assigned $PORT" [https://github.com/dblock/heroku-forward/blob/master/README.md]. В общем, ошибка не в программе и не в том, что я как-то не так запускаю хероку, а в самом хероку :(
+После этой ошибки он запускает программу с нуля, и из-за повтора твитов все ломается окончательно
+В доказательство того, что хероку в принципе начинает работать - скрины)) 
