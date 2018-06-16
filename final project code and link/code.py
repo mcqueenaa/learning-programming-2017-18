@@ -1,19 +1,18 @@
 ##Твиттер-бот, который по предложению постит какое-нибудь прозаическое произведение русской литературы (рассказ или повесть).
 ##Если предложение слишком длинное и не влезает в твит, бот должен сократить его так, чтобы потерять как можно меньше смысла
+##Бот постит твиты раз в час
 import tweepy
 import urllib.request  
 import re
 import html
 import time
 import os
-import flask
 from pymystem3 import Mystem
-consumer_key = os.environ["CONSUMER_KEY"]
-consumer_secret = os.environ["CONSUMER_SECRET"]
-access_token = os.environ["ACCESS_TOKEN"]
-access_token_secret = os.environ["ACCESS_TOKEN_SECRET"]
+from keys import consumer_key
+from keys import consumer_secret
+from keys import access_token
+from keys import access_token
 m = Mystem()
-app = flask.Flask(__name__)
 
 regTag = re.compile('<.*?>', re.DOTALL)
 
@@ -39,7 +38,7 @@ def get_book():
 
 def sent():
     if os.path.exists('Anna.txt') == False:
-       get_book() 
+        get_book() 
     with open ('Anna.txt', 'r', encoding = 'utf-8') as m:
         text = m.read()
     reg = r'[^(\s)].*?[\.\?\!]+|[А-ЯA-Z][\s[а-яa-z]+[\.\?\!\,]+\s&mdash;\s.*?[\.\?\!]+|&mdash;\s[А-ЯA-Z][\s[а-яa-z]+[\.\?\!\,]+\s&mdash;\s.*?[\.\?\!]+'
@@ -83,14 +82,10 @@ def main():
                 text = f + text[1:len(text)]
         del_s(text)        
         api.update_status(html.unescape(text))
-        time.sleep(5)
+        time.sleep(3600)
  
 if __name__ == '__main__':
     main()    
-    import os
-    app.debug = True
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
 
 
 
