@@ -1,2 +1,2 @@
 https://twitter.com/warnpeacebot
-Бот работает через pythonanywhere
+Р‘РѕС‚ СЂР°Р±РѕС‚Р°РµС‚ С‡РµСЂРµР· pythonanywhere
