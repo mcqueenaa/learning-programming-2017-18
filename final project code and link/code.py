@@ -43,8 +43,8 @@ def sent():
         text = m.read()
     reg = r'[^(\s)].*?[\.\?\!]+|[А-ЯA-Z][\s[а-яa-z]+[\.\?\!\,]+\s&mdash;\s.*?[\.\?\!]+|&mdash;\s[А-ЯA-Z][\s[а-яa-z]+[\.\?\!\,]+\s&mdash;\s.*?[\.\?\!]+'
     arr = re.findall(reg, text)
-    sent = arr[0]
-    return sent
+    #sent = arr[0]
+    return arr
 
 def del_s(s):
     with open ('Anna.txt', 'r', encoding = 'utf-8') as m:
@@ -58,9 +58,10 @@ def main():
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)    
     api = tweepy.API(auth)
-    k = 0
-    while k < 1:
-        text = sent()
+    sentences = sent()
+    #k = 0
+    #while k < 1:
+    for text in sentences:    
         print(text)
         if len(text) > 280:
             while len(text) > 280:
@@ -80,7 +81,7 @@ def main():
             if re.match('[а-яa-z]', text):
                 f = text[0].upper()
                 text = f + text[1:len(text)]
-        del_s(text)        
+        #del_s(text)        
         api.update_status(html.unescape(text))
         time.sleep(3600)
  
